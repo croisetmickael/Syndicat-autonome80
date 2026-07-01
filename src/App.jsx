@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Home from "./components/Home";
 import Banner from "./components/Banner";
 import Carousel from "./components/Carousel";
 import Presentation from "./components/Presentation";
@@ -13,6 +14,7 @@ function makeTicketNumber() {
 }
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState("home"); // home | signaling
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -73,8 +75,41 @@ export default function App() {
     setErrorMsg("");
   }
 
+  function goToSignaling() {
+    setCurrentPage("signaling");
+    window.scrollTo(0, 0);
+  }
+
+  function goToHome() {
+    setCurrentPage("home");
+    window.scrollTo(0, 0);
+  }
+
+  // Page d'accueil
+  if (currentPage === "home") {
+    return <Home onGoToSignaling={goToSignaling} />;
+  }
+
+  // Page Boîte de Signalement
   return (
     <div className="page">
+      <div style={{ padding: "0.5rem 2rem", background: "#f5f5f5", textAlign: "center" }}>
+        <button
+          onClick={goToHome}
+          style={{
+            background: "#0052A4",
+            color: "white",
+            border: "none",
+            padding: "0.5rem 1rem",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+        >
+          ← Retour à l'accueil
+        </button>
+      </div>
+
       <Banner />
 
       <header className="masthead">
