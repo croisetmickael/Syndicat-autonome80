@@ -14,13 +14,13 @@ function makeTicketNumber() {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("home"); // home | signaling
+  const [currentPage, setCurrentPage] = useState("home");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [status, setStatus] = useState("idle");
   const [ticket, setTicket] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -85,12 +85,10 @@ export default function App() {
     window.scrollTo(0, 0);
   }
 
-  // Page d'accueil
   if (currentPage === "home") {
     return <Home onGoToSignaling={goToSignaling} />;
   }
 
-  // Page Boîte de Signalement
   return (
     <div className="page">
       <div style={{ padding: "0.5rem 2rem", background: "#f5f5f5", textAlign: "center" }}>
